@@ -10,8 +10,8 @@ routes = [
 ]
 
 [vars]
-SITE_URL = "https://demo.bbird.live"
-CONTENT_ORIGIN = "https://main--demo--scdemos.aem.network"
+SITE_URL = "https://main--exxonmobil--adobe-ccady.aem.live"
+CONTENT_ORIGIN = "https://main--exxonmobil--adobe-ccady.aem.live"
 PUSH_INVALIDATION = "enabled"
 
 [observability.logs]

@@ -40,7 +40,7 @@ header {
   --nav-focus-color: var(--color-blue);
   --nav-transition: var(--duration-base) var(--ease-out-smooth);
 
-  /* desktop-only (overridden in @media 900px) */
+  /* desktop-only (overridden in @media 1200px) */
   --nav-desktop-max-width: 1264px;
   --nav-desktop-dropdown-min: 220px;
   --nav-desktop-dropdown-max: 320px;
@@ -253,7 +253,7 @@ header nav .nav-sections ul {
   letter-spacing: 0.01em;
 }
 
-@media (width <= 899px) {
+@media (width <= 1199px) {
   header nav .nav-sections {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -309,7 +309,7 @@ header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p > a {
 }
 
 /* chevron: mobile only (p::after); desktop uses li::after below */
-@media (width <= 899px) {
+@media (width <= 1199px) {
   header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p {
     padding-right: calc(var(--nav-item-padding) + 26px);
   }
@@ -429,7 +429,7 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:not(.nav-m
 }
 
 /* mobile: mega menu accordion – structure with .nav-mega-inner */
-@media (width <= 899px) {
+@media (width <= 1199px) {
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-mega-promo,
   header nav .nav-sections .default-content-wrapper > ul > li > ul > .nav-mega-inner > li.nav-mega-promo {
     display: none;
@@ -845,8 +845,8 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     }
   }
 
-/* desktop: 900px */
-@media (width >= 900px) {
+/* desktop: 1200px (horizontal nav needs the room) */
+@media (width >= 1200px) {
   header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p > .nav-submenu-toggle {
     display: none;
   }
@@ -1311,7 +1311,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
   }
 }
 
-@media (width <= 899px) {
+@media (width <= 1199px) {
   header nav .nav-tools .nav-auth-desktop {
     display: none;
   }
@@ -1357,7 +1357,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
   }
 }
 
-@media (width >= 900px) {
+@media (width >= 1200px) {
   header nav .nav-sections .default-content-wrapper > ul > li.nav-auth-mobile-item {
     display: none;
   }
@@ -1366,6 +1366,74 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
 /* large screens: 1200px */
 @media (width >= 1200px) {
   header nav {
-    max-width: 1264px;
+    max-width: 1360px;
+  }
+}
+
+/* desktop fit: brand slot matches the wordmark; tighter item rhythm */
+@media (width >= 1200px) {
+  header .nav-brand {
+    flex-basis: 170px;
+  }
+
+  header nav .nav-brand :is(img, svg) {
+    width: 170px;
+    height: 36px;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul {
+    gap: var(--space-m);
+  }
+
+  header nav .nav-tools .nav-search-input {
+    width: 150px;
+  }
+}
+
+/* compact desktop: smaller nav text, search collapses to an icon until focused */
+@media (width >= 1200px) and (width < 1366px) {
+  header nav {
+    gap: 0 var(--space-m);
+    padding: 0 var(--space-l);
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul {
+    gap: 14px;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > p {
+    font-size: var(--body-font-size-s);
+  }
+
+  header nav .nav-tools .nav-search-input {
+    width: 38px;
+    padding-inline: 0;
+    border-color: transparent;
+    color: transparent;
+    cursor: pointer;
+    transition: width var(--nav-transition), border-color var(--nav-transition);
+  }
+
+  header nav .nav-tools .nav-search-input::placeholder {
+    color: transparent;
+  }
+
+  header nav .nav-tools .nav-search-form:focus-within .nav-search-input {
+    position: absolute;
+    right: 0;
+    width: 220px;
+    padding: var(--nav-gap) 38px var(--nav-gap) var(--nav-padding);
+    border-color: var(--nav-focus-color);
+    background-color: var(--nav-bg, var(--background-color));
+    color: inherit;
+    cursor: text;
+  }
+
+  header nav .nav-tools .nav-search-form:focus-within .nav-search-input::placeholder {
+    color: inherit;
+  }
+
+  header nav .nav-tools .nav-search-submit {
+    right: 2px;
   }
 }

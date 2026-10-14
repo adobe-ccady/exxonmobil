@@ -1,51 +1,37 @@
-# FIRE
+# ExxonMobil
 
-> An educational platform for the FIRE (Financial Independence, Retire Early) movement, helping Canadians achieve financial independence through disciplined saving, intentional spending, and long-term investing.
+> Demonstration site for an integrated energy and chemical company. ExxonMobil's three businesses — Upstream, Product Solutions and Low Carbon Solutions — deliver energy, products and lower-emission solutions such as carbon capture and storage, hydrogen and lithium.
 
-diyFIRE offers a rich content library, interactive tools, guided learning journeys, live events, and curated products for every stage of the financial independence journey. The platform's core belief: financial literacy remains one of the most overlooked skills in modern life, and the goal of FIRE is the freedom to pursue work and interests without financial pressure.
+This is an Adobe Experience Manager (Edge Delivery Services) demo. Content and imagery are adapted from corporate.exxonmobil.com for illustration only.
 
-## Getting Started
+## Who we are
 
-- [Home](https://demo.bbird.live/): Platform overview and the diyFIRE philosophy
-- [Start Here](https://demo.bbird.live/start-here): 5-minute quiz generating a personalized FIRE plan
-- [New to Investing](https://demo.bbird.live/new-to-investing): Foundational resources for beginners
-- [Already Investing](https://demo.bbird.live/already-investing): Advanced content for those further along the path
-- [Guided Journey](https://demo.bbird.live/guided-journey): Structured, step-by-step learning path through financial independence
-- [About Us](https://demo.bbird.live/about-us): Team background and mission
+- [Who we are](https://main--exxonmobil--adobe-ccady.aem.live/who-we-are): Global organization, approach and values
+- [Our businesses](https://main--exxonmobil--adobe-ccady.aem.live/who-we-are/our-businesses): Upstream, Product Solutions and Low Carbon Solutions
+- [Upstream](https://main--exxonmobil--adobe-ccady.aem.live/who-we-are/upstream): Oil and natural gas exploration, development and production
+- [Product Solutions](https://main--exxonmobil--adobe-ccady.aem.live/who-we-are/product-solutions): Fuels, lubricants and chemicals
+- [Low Carbon Solutions](https://main--exxonmobil--adobe-ccady.aem.live/who-we-are/low-carbon-solutions): Lower-emission technologies for industry
+- [Technology](https://main--exxonmobil--adobe-ccady.aem.live/who-we-are/technology): Research, innovation and collaborations
+- [Leadership](https://main--exxonmobil--adobe-ccady.aem.live/who-we-are/leadership): Management and corporate governance
 
-## Learn
+## What we do
 
-- [Learn Hub](https://demo.bbird.live/learn): Full content library organized by topic
-- [FIRE](https://demo.bbird.live/learn/fire): What FIRE is, its flavours, and how to pursue it
-- [TFSA](https://demo.bbird.live/learn/tfsa): Tax-Free Savings Account — rules, contribution room, and strategy
-- [RRSP](https://demo.bbird.live/learn/rrsp): Registered Retirement Savings Plan — deductions, withdrawals, and optimal use
-- [FHSA](https://demo.bbird.live/learn/fhsa): First Home Savings Account — Canada's newest registered account
-- [RESP](https://demo.bbird.live/learn/resp): Registered Education Savings Plan — saving for a child's education
-- [Investing](https://demo.bbird.live/learn/investing): ETFs, stocks, bonds, and investment strategy fundamentals
-- [Retirement](https://demo.bbird.live/learn/retirement): Retirement planning including CPP, OAS, and GIS
-- [Unregistered Accounts](https://demo.bbird.live/learn/unregistered-cash): Non-registered investment strategies
-- [TFSA vs RRSP vs FHSA](https://demo.bbird.live/learn/accounts/tfsa-vs-rrsp-vs-fhsa): Side-by-side account comparison guide
+- [What we do](https://main--exxonmobil--adobe-ccady.aem.live/what-we-do): Overview of ExxonMobil's activities
+- [Energy supply](https://main--exxonmobil--adobe-ccady.aem.live/what-we-do/energy-supply): Oil and natural gas for a growing world
+- [Transforming transportation](https://main--exxonmobil--adobe-ccady.aem.live/what-we-do/transforming-transportation): Lower-emission fuels and advanced lubricants
+- [Materials for modern living](https://main--exxonmobil--adobe-ccady.aem.live/what-we-do/materials-for-modern-living): Chemicals, plastics and advanced recycling
+- [Delivering industrial solutions](https://main--exxonmobil--adobe-ccady.aem.live/what-we-do/delivering-industrial-solutions): Carbon capture and storage, hydrogen and lithium
 
-## Articles
+## Sustainability
 
-- [Articles](https://demo.bbird.live/articles): Latest articles on personal finance, investing, and FIRE
+- [Sustainability](https://main--exxonmobil--adobe-ccady.aem.live/sustainability): Report focus areas
+- [Advancing climate solutions](https://main--exxonmobil--adobe-ccady.aem.live/sustainability/advancing-climate-solutions): Reducing emissions in operations and for customers
+- [Energy tools](https://main--exxonmobil--adobe-ccady.aem.live/sustainability/energy-tools): Fleet emissions, carbon capture and low-carbon hydrogen estimators
 
-## Events
+## Products, community and news
 
-- [Events](https://demo.bbird.live/events): Workshops, webinars, and community events
-
-## Tools & Calculators
-
-- [Savings Rate Calculator](https://demo.bbird.live/tools/savings-rate): Calculate and optimize your savings rate toward FIRE
-- [Compound Interest Calculator](https://demo.bbird.live/tools/compound-interest-calculator): Project investment growth over time
-- [Net Worth Tracker](https://demo.bbird.live/tools/net-worth): Track and visualize your net worth progress
-
-## Products
-
-- [Books](https://demo.bbird.live/products/books): Curated personal finance reading list
-- [Courses](https://demo.bbird.live/products/courses): Structured learning programs
-- [Tools](https://demo.bbird.live/products/tools): Premium financial planning tools
-
-## FAQs
-
-- [FAQs](https://demo.bbird.live/faqs): Frequently asked questions about FIRE and investing
+- [Products](https://main--exxonmobil--adobe-ccady.aem.live/products): Lubricants, fuels and chemicals
+- [Community](https://main--exxonmobil--adobe-ccady.aem.live/community): STEM education, worldwide giving and owner relations
+- [Newsroom](https://main--exxonmobil--adobe-ccady.aem.live/newsroom): News releases, publications and viewpoints
+- [Investors](https://main--exxonmobil--adobe-ccady.aem.live/investors): Investor overview
+- [Careers](https://main--exxonmobil--adobe-ccady.aem.live/careers): Career paths and benefits

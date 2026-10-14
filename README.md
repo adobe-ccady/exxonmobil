@@ -1,8 +1,8 @@
-Demo Project - Cloud Adoption
+ExxonMobil Demo Site (AEM Edge Delivery Services + Document Authoring)
 
 ## Environments
-- Preview: https://main--demo--scdemos.aem.page/
-- Live: https://main--demo--scdemos.aem.live/
+- Preview: https://main--exxonmobil--adobe-ccady.aem.page/
+- Live: https://main--exxonmobil--adobe-ccady.aem.live/
 
 ## Documentation
 

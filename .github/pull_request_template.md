@@ -3,5 +3,5 @@ Please always provide the [GitHub issue(s)](../issues) your PR is for, as well a
 Fix #<gh-issue-id>
 
 Test URLs:
-- Before: https://main--demo--scdemos.aem.live/
-- After: https://<branch>--demo--scdemos.aem.live/
+- Before: https://main--exxonmobil--adobe-ccady.aem.live/
+- After: https://<branch>--exxonmobil--adobe-ccady.aem.live/

@@ -7,7 +7,7 @@
   gap: var(--space-l) var(--space-2xl);
   margin: var(--space-xl) auto 0;
   padding-top: var(--space-l);
-  border-top: var(--border-heritage);
+  border-top: var(--border-subtle);
 }
 
 .events .event-meta > div {
@@ -22,28 +22,31 @@
   font-size: var(--body-font-size-xs);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  color: light-dark(var(--color-rust), var(--color-gold));
+  letter-spacing: 0.14em;
+  color: var(--color-blue);
 }
 
 .events .event-meta dd {
   margin: 0;
-  font-family: var(--font-family-serif);
+  font-family: var(--heading-font-family);
   font-size: var(--body-font-size-l);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--color-text);
 }
 
 .events .event-meta-badge {
   display: inline-block;
   padding: 3px var(--space-m);
-  border: 1px solid light-dark(rgb(161 79 43 / 30%), rgb(209 106 62 / 35%));
-  border-radius: 20px;
-  background-color: light-dark(rgb(161 79 43 / 8%), rgb(209 106 62 / 10%));
+  border: 1px solid light-dark(rgb(228 0 43 / 30%), rgb(255 77 106 / 35%));
+  border-radius: var(--radius-s);
+  background-color: light-dark(rgb(228 0 43 / 8%), rgb(255 77 106 / 10%));
   font-family: var(--font-family-mono);
   font-size: var(--body-font-size-xs);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  color: light-dark(var(--color-rust), var(--color-rust-bright));
+  letter-spacing: 0.12em;
+  color: light-dark(var(--color-red), var(--color-red-bright));
 }
 
 @media (width >= 900px) {

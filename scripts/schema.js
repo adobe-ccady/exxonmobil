@@ -52,13 +52,26 @@ function getAbsoluteUrl(value) {
   }
 }
 
+/* Organization details come from page metadata (site-name / site-description) when authored. */
+function getOrganization() {
+  const { origin } = window.location;
+  return {
+    name: getMetadata('site-name') || 'ExxonMobil',
+    url: origin,
+    logo: `${origin}/icons/logo.svg`,
+    description: getMetadata('site-description')
+      || 'Integrated energy and chemical company delivering energy, products and lower-emission solutions.',
+  };
+}
+
 function buildOrganizationSchema() {
+  const org = getOrganization();
   return {
     '@type': 'Organization',
-    name: 'diyFIRE',
-    url: 'https://demo.bbird.live',
-    logo: 'https://demo.bbird.live/icons/logo.svg',
-    description: 'A step-by-step, uniquely Canadian path to financial independence.',
+    name: org.name,
+    url: org.url,
+    logo: org.logo,
+    description: org.description,
     sameAs: [],
   };
 }
@@ -106,12 +119,13 @@ function buildArticleSchema() {
   const keywords = getMetadata('keywords');
   if (keywords) schema.keywords = keywords;
 
+  const org = getOrganization();
   schema.publisher = {
     '@type': 'Organization',
-    name: 'diyFIRE',
+    name: org.name,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://demo.bbird.live/icons/logo.svg',
+      url: org.logo,
     },
   };
 
@@ -159,10 +173,11 @@ function buildEventSchema() {
     };
   }
 
+  const org = getOrganization();
   schema.organizer = {
     '@type': 'Organization',
-    name: 'diyFIRE',
-    url: 'https://demo.bbird.live',
+    name: org.name,
+    url: org.url,
   };
 
   return schema;

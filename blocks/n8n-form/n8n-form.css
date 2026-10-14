@@ -1,9 +1,11 @@
 /* N8N Form Block Styling */
 
 .section .n8n-form-wrapper {
-  background-color: light-dark(var(--color-gray-100), var(--color-card-dark));
+  background-color: light-dark(var(--color-paper), rgb(232 238 246 / 3%));
+  border: var(--border-subtle);
+  box-shadow: var(--shadow-card);
   padding: 32px;
-  border-radius: 12px;
+  border-radius: var(--radius-l);
   width: 100%;
   contain: layout;
 }
@@ -32,9 +34,9 @@
 
 .n8n-form .form-description {
   font-size: var(--body-font-size-m);
-  color: var(--text-color);
   margin: 0 0 16px;
   line-height: 1.5;
+  color: var(--color-text-muted);
 }
 
 /* Form Fields Container */
@@ -63,50 +65,53 @@
 
 .n8n-form label[data-required]::after {
   content: ' *';
-  color: light-dark(var(--color-red-500), var(--color-red-300));
+  color: light-dark(var(--color-red), var(--color-red-bright));
   font-weight: 700;
 }
 
-/* Input ring uses box-shadow (fixed 2px) so focus/hover never shifts layout */
+/* Input ring uses box-shadow (1px rest, 2px focus) so focus/hover never shifts layout.
+   Rest ring is stronger than --border-subtle so field edges stay perceivable (WCAG 1.4.11). */
 main .n8n-form input {
   box-sizing: border-box;
   width: 100%;
   padding: 12px 16px;
   border: 2px solid transparent;
-  border-radius: 6px;
+  border-radius: var(--radius-s);
   font-size: var(--body-font-size-s);
   font-family: var(--body-font-family);
-  background-color: light-dark(var(--color-light), rgb(25 29 35));
+  background-color: light-dark(var(--color-white), var(--color-navy-card));
   color: var(--text-color);
-  transition: box-shadow 0.2s ease;
-  box-shadow: 0 0 0 2px light-dark(var(--color-gray-300), var(--color-gray-600));
+  transition: box-shadow var(--duration-fast) var(--ease-out-smooth);
+  box-shadow: 0 0 0 1px light-dark(rgb(11 31 58 / 40%), rgb(232 238 246 / 32%));
 }
 
 main .n8n-form input::placeholder {
-  color: light-dark(var(--color-gray-400), var(--color-gray-500));
+  color: var(--color-text-muted);
+  opacity: 1;
 }
 
 main .n8n-form input:hover {
   border-color: transparent;
-  box-shadow: 0 0 0 2px light-dark(var(--color-gray-300), var(--color-gray-600));
+  box-shadow: 0 0 0 1px var(--color-text-muted);
 }
 
 main .n8n-form input:focus,
 main .n8n-form input:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px light-dark(var(--color-rust), var(--color-rust-bright));
+  box-shadow: 0 0 0 2px var(--color-blue);
 }
 
 main .n8n-form input:invalid:not(:placeholder-shown) {
-  box-shadow: 0 0 0 2px light-dark(var(--color-red-500), var(--color-red-400));
+  box-shadow: 0 0 0 2px light-dark(var(--color-red), var(--color-red-bright));
 }
 
 main .n8n-form input:invalid:not(:placeholder-shown):focus,
 main .n8n-form input:invalid:not(:placeholder-shown):focus-visible {
-  box-shadow: 0 0 0 2px light-dark(var(--color-red-500), var(--color-red-400));
+  box-shadow: 0 0 0 2px light-dark(var(--color-red), var(--color-red-bright)),
+    0 0 0 5px light-dark(rgb(228 0 43 / 14%), rgb(255 77 106 / 18%));
 }
 
-/* Button Styling – override global button.button / .primary (fixed rust, no dark shift) */
+/* Button Styling – matches global CTA (navy→red gradient, position shift on hover) */
 .n8n-form .submit-wrapper {
   margin-top: 8px;
   width: fit-content;
@@ -116,20 +121,24 @@ main .n8n-form input:invalid:not(:placeholder-shown):focus-visible {
 .n8n-form button.button {
   width: auto;
   min-width: 180px;
-  border: 1px solid light-dark(var(--color-rust), var(--color-rust-bright));
-  border-radius: 6px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-m);
   padding: 14px 32px;
   font-size: var(--body-font-size-m);
   font-weight: 600;
   line-height: 1.2;
   text-transform: none;
-  letter-spacing: normal;
-  background-color: light-dark(var(--color-rust), var(--color-rust-bright));
-  background-image: none;
-  color: var(--color-parchment);
+  letter-spacing: 0.01em;
+  background-color: var(--color-navy);
+  background-image: var(--gradient-cta);
+  background-size: 160% 100%;
+  background-position: 0% 50%;
+  color: var(--color-white);
   cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0%);
+  transition: background-position var(--duration-base) var(--ease-out-smooth),
+    box-shadow var(--duration-base) var(--ease-out-smooth),
+    transform var(--duration-base) var(--ease-out-smooth);
+  box-shadow: none;
 }
 
 .n8n-form button.button::after {
@@ -137,33 +146,35 @@ main .n8n-form input:invalid:not(:placeholder-shown):focus-visible {
 }
 
 .n8n-form button.button:hover {
-  background-color: var(--color-gold);
-  border-color: var(--color-gold);
-  color: var(--color-parchment);
-  transform: none;
-  box-shadow: 0 2px 8px light-dark(rgb(0 0 0 / 15%), rgb(0 0 0 / 35%));
+  background-position: 100% 50%;
+  color: var(--color-white);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px -8px light-dark(rgb(11 31 58 / 45%), rgb(0 0 0 / 60%)),
+    0 4px 14px -6px rgb(228 0 43 / 35%);
 }
 
 .n8n-form button.button:focus-visible {
-  background-color: var(--color-gold);
-  border-color: var(--color-gold);
-  color: var(--color-parchment);
-  transform: none;
-  box-shadow: 0 2px 8px light-dark(rgb(0 0 0 / 15%), rgb(0 0 0 / 35%));
-  outline: 2px solid light-dark(var(--color-rust), var(--color-rust-bright));
-  outline-offset: 2px;
+  background-position: 100% 50%;
+  color: var(--color-white);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px -8px light-dark(rgb(11 31 58 / 45%), rgb(0 0 0 / 60%)),
+    0 4px 14px -6px rgb(228 0 43 / 35%);
+  outline: 2px solid var(--color-blue);
+  outline-offset: 3px;
 }
 
 .n8n-form button.button:active {
-  box-shadow: 0 0 4px light-dark(rgb(0 0 0 / 2%), rgb(0 0 0 / 20%));
+  transform: none;
+  box-shadow: 0 2px 6px -2px light-dark(rgb(11 31 58 / 30%), rgb(0 0 0 / 50%));
 }
 
 .n8n-form button.button:disabled,
 .n8n-form button.button:disabled:hover,
 .n8n-form button.button:disabled:focus-visible {
-  background-color: light-dark(var(--color-gray-500), var(--color-gray-600));
-  border-color: light-dark(var(--color-gray-500), var(--color-gray-600));
-  color: var(--color-parchment);
+  background-color: var(--color-shaded);
+  background-image: none;
+  border-color: light-dark(rgb(11 31 58 / 12%), rgb(232 238 246 / 14%));
+  color: var(--color-text-muted);
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
@@ -175,14 +186,14 @@ main .n8n-form input:invalid:not(:placeholder-shown):focus-visible {
 .n8n-form .success-message,
 .n8n-form .error-message {
   padding: 24px;
-  border-radius: 8px;
+  border-radius: var(--radius-m);
   text-align: center;
 }
 
 .n8n-form .success-message {
-  background-color: light-dark(var(--color-green-100), rgb(30 144 41 / 20%));
-  border: 2px solid light-dark(var(--color-green-200), var(--color-green-400));
-  color: light-dark(var(--color-green-600), var(--color-green-200));
+  background-color: light-dark(rgb(15 122 104 / 8%), rgb(15 122 104 / 20%));
+  border: 1px solid light-dark(rgb(15 122 104 / 35%), rgb(92 201 178 / 40%));
+  color: light-dark(var(--color-teal), var(--color-teal-bright));
 }
 
 .n8n-form .success-message h3 {
@@ -197,9 +208,9 @@ main .n8n-form input:invalid:not(:placeholder-shown):focus-visible {
 }
 
 .n8n-form .error-message {
-  background-color: light-dark(var(--color-red-100), rgb(199 16 0 / 20%));
-  border: 2px solid light-dark(var(--color-red-200), var(--color-red-400));
-  color: light-dark(var(--color-red-600), var(--color-red-200));
+  background-color: light-dark(rgb(228 0 43 / 5%), rgb(255 77 106 / 12%));
+  border: 1px solid light-dark(rgb(228 0 43 / 35%), rgb(255 77 106 / 40%));
+  color: light-dark(var(--color-red), var(--color-red-bright));
 }
 
 .n8n-form .error-message p {
@@ -235,18 +246,18 @@ main .n8n-form input:invalid:not(:placeholder-shown):focus-visible {
   main .n8n-form input,
   main .n8n-form input:hover {
     border-width: 3px;
-    box-shadow: 0 0 0 3px light-dark(var(--color-gray-300), var(--color-gray-600));
+    box-shadow: 0 0 0 3px var(--color-text-muted);
   }
 
   main .n8n-form input:focus,
   main .n8n-form input:focus-visible {
-    box-shadow: 0 0 0 3px light-dark(var(--color-rust), var(--color-rust-bright));
+    box-shadow: 0 0 0 3px var(--color-blue);
   }
 
   main .n8n-form input:invalid:not(:placeholder-shown),
   main .n8n-form input:invalid:not(:placeholder-shown):focus,
   main .n8n-form input:invalid:not(:placeholder-shown):focus-visible {
-    box-shadow: 0 0 0 3px light-dark(var(--color-red-500), var(--color-red-400));
+    box-shadow: 0 0 0 3px light-dark(var(--color-red), var(--color-red-bright));
   }
 }
 
@@ -257,7 +268,8 @@ main .n8n-form input:invalid:not(:placeholder-shown):focus-visible {
     transition: none;
   }
 
-  .n8n-form button.button:hover {
-    box-shadow: 0 1px 4px light-dark(rgb(0 0 0 / 12%), rgb(0 0 0 / 30%));
+  .n8n-form button.button:hover,
+  .n8n-form button.button:focus-visible {
+    transform: none;
   }
 }

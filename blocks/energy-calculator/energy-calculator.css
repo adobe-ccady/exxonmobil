@@ -1,0 +1,272 @@
+main .energy-calculator {
+  --ec-field-border: light-dark(rgb(11 31 58 / 30%), rgb(232 238 246 / 28%));
+
+  max-width: var(--grid-container-width);
+  margin: 0 auto;
+  padding: var(--space-m) 0;
+}
+
+main .energy-calculator .energy-calculator-header h2 {
+  margin: 0 0 var(--space-s);
+}
+
+main .energy-calculator .energy-calculator-intro {
+  margin: 0 0 var(--space-l);
+  max-width: 68ch;
+  color: var(--color-text-muted);
+}
+
+main .energy-calculator .energy-calculator-legend {
+  margin: 0 0 var(--space-m);
+  border: var(--border-subtle);
+  border-radius: var(--radius-m);
+  padding: var(--space-s) var(--space-m);
+  background: light-dark(var(--color-paper), rgb(15 36 64 / 50%));
+}
+
+main .energy-calculator .energy-calculator-legend summary {
+  cursor: pointer;
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+}
+
+main .energy-calculator .energy-calculator-legend summary:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 3px;
+}
+
+main .energy-calculator .energy-calculator-legend-content {
+  margin: var(--space-s) 0 0;
+}
+
+main .energy-calculator .energy-calculator-legend ul {
+  margin: 0;
+  padding-inline-start: 18px;
+  display: grid;
+  gap: 4px;
+  font-size: var(--body-font-size-s);
+  color: var(--color-text-muted);
+}
+
+main .energy-calculator .energy-calculator-disclaimer {
+  margin: var(--space-s) 0 0;
+  font-size: var(--body-font-size-xs);
+  color: var(--color-text-muted);
+}
+
+main .energy-calculator .energy-calculator-layout {
+  display: grid;
+  gap: var(--space-m);
+}
+
+main .energy-calculator .energy-calculator-form {
+  border: var(--glass-border);
+  border-radius: var(--radius-l);
+  padding: var(--space-l);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-card);
+}
+
+main .energy-calculator .energy-calculator-group {
+  display: grid;
+  gap: var(--space-m);
+}
+
+main .energy-calculator .energy-calculator-row {
+  display: grid;
+  gap: 6px;
+}
+
+main .energy-calculator .energy-calculator-label {
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+}
+
+main .energy-calculator .energy-calculator-tip {
+  display: inline-flex;
+  align-items: center;
+  margin-inline-start: 4px;
+  color: var(--color-text-muted);
+  cursor: help;
+  vertical-align: middle;
+}
+
+main .energy-calculator .energy-calculator-tip svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+main .energy-calculator .energy-calculator-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+}
+
+main .energy-calculator input[type='number'],
+main .energy-calculator select {
+  inline-size: 100%;
+  min-inline-size: 0;
+  border: 1px solid var(--ec-field-border);
+  border-radius: var(--radius-s);
+  padding: 10px 12px;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  color: inherit;
+  background: light-dark(var(--color-white), var(--color-navy-card));
+  transition: border-color var(--duration-fast) var(--ease-out-smooth), box-shadow var(--duration-fast) var(--ease-out-smooth);
+}
+
+main .energy-calculator input[type='number']:focus-visible,
+main .energy-calculator select:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 1px;
+  border-color: var(--color-blue);
+}
+
+main .energy-calculator .energy-calculator-suffix {
+  flex-shrink: 0;
+  min-inline-size: 7.5em;
+  font-family: var(--font-family-mono);
+  font-size: var(--body-font-size-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+main .energy-calculator .energy-calculator-toggle {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  border: var(--border-subtle);
+  border-radius: var(--radius-s);
+  padding: var(--space-s) var(--space-m);
+}
+
+main .energy-calculator .energy-calculator-toggle input {
+  inline-size: 18px;
+  block-size: 18px;
+  accent-color: var(--color-red);
+}
+
+main .energy-calculator .energy-calculator-output {
+  display: grid;
+  gap: var(--space-m);
+}
+
+main .energy-calculator .energy-calculator-metric {
+  position: relative;
+  border: var(--border-subtle);
+  border-radius: var(--radius-l);
+  padding: var(--space-l);
+  background: light-dark(var(--color-white), var(--color-navy-card));
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: border-color var(--duration-base) var(--ease-out-smooth), box-shadow var(--duration-base) var(--ease-out-smooth);
+}
+
+main .energy-calculator .energy-calculator-metric::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  inline-size: 3px;
+  background: var(--gradient-brand);
+}
+
+main .energy-calculator .energy-calculator-metric:hover {
+  border-color: light-dark(rgb(31 95 173 / 35%), rgb(127 178 240 / 35%));
+  box-shadow: var(--shadow-lift-m);
+}
+
+main .energy-calculator .energy-calculator-metric h3 {
+  margin: 0 0 var(--space-xs);
+  font-family: var(--font-family-mono);
+  font-size: var(--body-font-size-xs);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+main .energy-calculator .energy-calculator-metric-value {
+  margin: 0 0 var(--space-xs);
+  font-size: clamp(22px, 2vw, 30px);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+main .energy-calculator .energy-calculator-metric-note {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--body-font-size-s);
+}
+
+main .energy-calculator .energy-calculator-chart-card,
+main .energy-calculator .energy-calculator-breakdown {
+  grid-column: 1 / -1;
+}
+
+main .energy-calculator .energy-calculator-chart-wrap {
+  margin-top: var(--space-s);
+}
+
+main .energy-calculator .energy-calculator-chart {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+main .energy-calculator .energy-calculator-chart-fallback {
+  margin: 0;
+  padding: var(--space-s);
+  font-size: var(--body-font-size-s);
+  color: var(--color-text-muted);
+}
+
+main .energy-calculator .energy-calculator-breakdown {
+  overflow-x: auto;
+}
+
+main .energy-calculator .energy-calculator-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--body-font-size-s);
+  font-variant-numeric: tabular-nums;
+}
+
+main .energy-calculator .energy-calculator-table th,
+main .energy-calculator .energy-calculator-table td {
+  padding: var(--space-xs) var(--space-s);
+  border-bottom: var(--border-subtle);
+  text-align: right;
+}
+
+main .energy-calculator .energy-calculator-table thead th {
+  font-weight: 600;
+  white-space: nowrap;
+  background: light-dark(var(--color-navy), var(--color-navy-deep));
+  color: var(--color-light);
+  border-bottom: 2px solid var(--color-red);
+}
+
+main .energy-calculator .energy-calculator-table th:first-child,
+main .energy-calculator .energy-calculator-table td:first-child {
+  text-align: left;
+}
+
+main .energy-calculator .energy-calculator-table tbody tr:nth-child(even) {
+  background: light-dark(var(--color-paper), rgb(22 48 82 / 60%));
+}
+
+@media (width >= 600px) {
+  main .energy-calculator .energy-calculator-output {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 900px) {
+  main .energy-calculator .energy-calculator-layout {
+    grid-template-columns: minmax(280px, 400px) 1fr;
+    align-items: start;
+  }
+}

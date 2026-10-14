@@ -1,9 +1,20 @@
 footer {
+  position: relative;
   width: 100%;
-  background-color: light-dark(var(--color-rust), #080d0d);
-  color: var(--color-parchment);
-  border-top: light-dark(none, var(--border-heritage));
+  background-color: light-dark(var(--color-navy), var(--color-navy-deep));
+  color: var(--color-paper);
+  border-top: 1px solid light-dark(transparent, rgb(232 238 246 / 10%));
   font-size: var(--body-font-size-xs);
+}
+
+/* thin navy-to-red brand rule along the top edge */
+footer::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background-image: var(--gradient-brand);
+  pointer-events: none;
 }
 
 footer .footer > div {
@@ -23,21 +34,23 @@ footer .footer .section:first-child {
   padding-bottom: var(--space-m);
   font-size: var(--body-font-size-s);
   font-weight: 400;
+  color: rgb(244 247 251 / 88%);
 }
 
 /* Row 2: Tagline */
 footer .footer .section:nth-child(2) p {
-  font-family: var(--font-family-serif);
-  font-weight: 400;
+  font-family: var(--heading-font-family);
+  font-weight: 600;
   font-size: var(--body-font-size-s);
-  opacity: 0.7;
+  letter-spacing: 0.01em;
+  color: rgb(244 247 251 / 78%);
   margin-top: var(--space-s);
 }
 
 /* Row 3: Copyright + social icons (merged) */
 footer .footer .section:nth-child(3) {
   margin-top: var(--space-m);
-  border-top: 1px solid rgb(255 255 255 / 15%);
+  border-top: 1px solid rgb(232 238 246 / 14%);
   padding-top: var(--space-m);
 }
 
@@ -68,33 +81,46 @@ footer .footer .section:nth-child(3) li {
 }
 
 footer .footer a:any-link {
-  color: var(--color-parchment);
-  text-decoration-color: rgb(245 242 237 / 30%);
-  transition: color 0.25s, text-decoration-color 0.25s, opacity 0.25s;
+  color: var(--color-paper);
+  text-decoration-color: rgb(244 247 251 / 30%);
+  text-underline-offset: 0.2em;
+  transition: color var(--duration-base) var(--ease-out-smooth),
+    text-decoration-color var(--duration-base) var(--ease-out-smooth),
+    opacity var(--duration-base) var(--ease-out-smooth);
 }
 
-footer .footer a:any-link:hover {
-  text-decoration-color: var(--color-gold);
-  color: var(--color-gold);
+/* footer is always dark: use the light-on-dark accents directly */
+footer .footer a:any-link:hover,
+footer .footer a:any-link:focus-visible {
+  text-decoration-color: var(--color-red-bright);
+  color: var(--color-sky);
+}
+
+footer .footer a:any-link:focus-visible {
+  outline: 2px solid var(--color-sky);
+  outline-offset: 2px;
+  border-radius: var(--radius-s);
 }
 
 footer .footer .section:nth-child(3) ul a {
   text-decoration: none;
   color: inherit;
-  opacity: 0.7;
-  transition: opacity 0.25s, transform 0.25s;
+  opacity: 0.78;
+  transition: opacity var(--duration-base) var(--ease-out-smooth),
+    transform var(--duration-base) var(--ease-out-smooth);
 }
 
-footer .footer .section:nth-child(3) ul a:hover {
+footer .footer .section:nth-child(3) ul a:hover,
+footer .footer .section:nth-child(3) ul a:focus-visible {
   opacity: 1;
-  transform: scale(1.1);
+  transform: translateY(-2px);
 }
 
 footer .footer .icon {
   width: 18px;
   height: 18px;
   filter: brightness(0) invert(1);
-  transition: transform 0.25s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+  transition: transform var(--duration-base) var(--ease-out-smooth);
 }
 
 footer .footer .icon.icon-logo {
@@ -105,7 +131,7 @@ footer .footer .icon.icon-logo {
   vertical-align: middle;
   margin-inline: 4px;
   filter: none;
-  color: var(--color-parchment);
+  color: var(--color-paper);
 }
 
 footer .footer .icon.icon-logo :is(svg, img) {

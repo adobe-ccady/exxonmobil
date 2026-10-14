@@ -15,10 +15,11 @@ main .form-container .form-wrapper {
 main .form form {
   display: grid;
   gap: var(--space-s);
-  border: var(--border-heritage);
-  border-radius: var(--border-radius-heritage);
+  border: var(--border-subtle);
+  border-radius: var(--radius-l);
   padding: var(--space-l);
-  background: light-dark(var(--color-parchment), var(--color-card-dark));
+  background: light-dark(var(--color-paper), rgb(232 238 246 / 3%));
+  box-shadow: var(--shadow-card);
   color: inherit;
   min-width: 0;
   max-width: 100%;
@@ -44,13 +45,16 @@ main .form form {
   scroll-margin: 1em;
   width: 100%;
   min-width: 0;
-  border: 1px solid light-dark(rgb(26 26 26 / 20%), rgb(245 242 237 / 20%));
-  border-radius: 8px;
+
+  /* stronger than --border-subtle so field edges stay perceivable (WCAG 1.4.11) */
+  border: 1px solid light-dark(rgb(11 31 58 / 40%), rgb(232 238 246 / 32%));
+  border-radius: var(--radius-s);
   padding: 12px 14px;
-  background: light-dark(var(--color-light), rgb(6 13 13 / 60%));
-  color: inherit;
+  background: light-dark(var(--color-white), var(--color-navy-card));
+  color: var(--color-text);
   font-size: var(--body-font-size-s);
-  transition: border-color 0.25s, box-shadow 0.25s;
+  transition: border-color var(--duration-fast) var(--ease-out-smooth),
+    box-shadow var(--duration-fast) var(--ease-out-smooth);
 }
 
 .form textarea {
@@ -68,16 +72,22 @@ main .form form {
 .form input:hover,
 .form textarea:hover,
 .form select:hover {
-  border-color: light-dark(var(--color-rust), var(--color-rust-bright));
+  border-color: var(--color-text-muted);
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
 }
 
 .form input:focus,
 .form textarea:focus,
 .form select:focus {
-  outline: 2px solid var(--color-gold);
+  outline: 2px solid var(--color-blue);
   outline-offset: 2px;
-  border-color: var(--color-gold);
-  box-shadow: 0 0 0 4px rgb(197 160 89 / 12%);
+  border-color: var(--color-blue);
+  box-shadow: 0 0 0 4px light-dark(rgb(31 95 173 / 12%), rgb(127 178 240 / 16%));
 }
 
 .form input:disabled,
@@ -112,7 +122,7 @@ main .form form {
 .form legend[data-required]::after {
   content: '*';
   margin-left: 0.25ch;
-  color: inherit;
+  color: light-dark(var(--color-red), var(--color-red-bright));
 }
 
 .form .form-field + .form-field {
@@ -180,7 +190,7 @@ main .form form {
   border: 1px solid currentcolor;
   background: currentcolor;
   opacity: 0.4;
-  transition: opacity 0.2s;
+  transition: opacity var(--duration-fast) var(--ease-out-smooth);
   cursor: pointer;
 }
 
@@ -194,7 +204,7 @@ main .form form {
   height: 1em;
   border-radius: 50%;
   background: inherit;
-  transition: left 0.2s;
+  transition: left var(--duration-fast) var(--ease-out-smooth);
 }
 
 .form .form-field.toggle-field label input:checked + span {
@@ -207,16 +217,15 @@ main .form form {
 
 .form .field-help-text {
   margin-top: 0.2em;
-  color: inherit;
-  opacity: 0.8;
+  color: var(--color-text-muted);
   font-size: var(--body-font-size-xs);
 }
 
 .form .form-status {
   margin: var(--space-s) 0 0;
   font-size: var(--body-font-size-s);
-  color: inherit;
-  opacity: 0.9;
+  font-weight: 500;
+  color: var(--color-text);
 }
 
 /* Buttons – primary submit, secondary reset */
@@ -234,40 +243,59 @@ main .form form {
 }
 
 .form .button-wrapper button.button {
-  border-radius: 8px;
-  padding: 12px 24px;
+  border-radius: var(--radius-m);
+  padding: 14px 28px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: background-position var(--duration-base) var(--ease-out-smooth),
+    background-color var(--duration-base) var(--ease-out-smooth),
+    border-color var(--duration-base) var(--ease-out-smooth),
+    color var(--duration-base) var(--ease-out-smooth),
+    box-shadow var(--duration-base) var(--ease-out-smooth),
+    transform var(--duration-base) var(--ease-out-smooth);
 }
 
 .form .button-wrapper button.button:not(.secondary) {
-  border: 1px solid light-dark(var(--color-rust), var(--color-rust-bright));
-  background: light-dark(var(--color-rust), var(--color-rust-bright));
-  color: var(--color-parchment);
+  border: 1px solid transparent;
+  background-color: var(--color-navy);
+  background-image: var(--gradient-cta);
+  background-size: 160% 100%;
+  background-position: 0% 50%;
+  color: var(--color-white);
+}
+
+.form .button-wrapper button.button:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 3px;
 }
 
 .form .button-wrapper button.button:disabled,
 .form .button-wrapper button.button:hover:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
-.form .button-wrapper button.button:not(.secondary):hover {
-  background: var(--color-gold);
-  border-color: var(--color-gold);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px light-dark(rgb(161 79 43 / 25%), rgb(197 160 89 / 25%));
+.form .button-wrapper button.button:not(.secondary):hover,
+.form .button-wrapper button.button:not(.secondary):focus-visible {
+  background-position: 100% 50%;
+  color: var(--color-white);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px -8px light-dark(rgb(11 31 58 / 45%), rgb(0 0 0 / 60%)),
+    0 4px 14px -6px rgb(228 0 43 / 35%);
 }
 
 .form .button-wrapper button.button.secondary {
-  border: 1px solid light-dark(var(--color-rust), var(--color-rust-bright));
+  border: 1.5px solid var(--color-text);
   background: transparent;
-  color: light-dark(var(--color-rust), var(--color-rust-bright));
+  color: var(--color-text);
 }
 
-.form .button-wrapper button.button.secondary:hover {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
-  transform: translateY(-2px);
+.form .button-wrapper button.button.secondary:hover,
+.form .button-wrapper button.button.secondary:focus-visible {
+  border-color: var(--color-link-hover);
+  background: light-dark(rgb(228 0 43 / 5%), rgb(255 77 106 / 10%));
+  color: var(--color-link-hover);
+  transform: translateY(-1px);
 }

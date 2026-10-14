@@ -1,5 +1,13 @@
 /* Quiz block – scoped to .quiz per AGENTS.md */
 .quiz {
+  /* feedback tones – teal for correct, red for incorrect; AA in both themes */
+  --quiz-correct: light-dark(var(--color-teal), var(--color-teal-bright));
+  --quiz-correct-bg: light-dark(rgb(15 122 104 / 8%), rgb(15 122 104 / 20%));
+  --quiz-correct-border: light-dark(rgb(15 122 104 / 55%), rgb(92 201 178 / 55%));
+  --quiz-wrong: light-dark(var(--color-red), var(--color-red-bright));
+  --quiz-wrong-bg: light-dark(rgb(228 0 43 / 5%), rgb(255 77 106 / 12%));
+  --quiz-wrong-border: light-dark(rgb(228 0 43 / 50%), rgb(255 77 106 / 55%));
+
   position: relative;
   max-width: var(--grid-container-width);
   margin: 0 auto;
@@ -23,10 +31,10 @@
 
 /* ── Slider shell ── */
 .quiz .quiz-slider-shell {
-  border: 1px solid light-dark(var(--color-gray-200), rgb(197 160 89 / 20%));
-  border-radius: 16px;
+  border: var(--border-subtle);
+  border-radius: var(--radius-l);
   background: var(--color-shaded);
-  box-shadow: var(--shadow-lift-m);
+  box-shadow: var(--shadow-card);
   overflow: hidden;
   min-width: 0;
 }
@@ -39,7 +47,7 @@
   display: flex;
   width: 100%;
   align-items: stretch;
-  transition: transform 0.45s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+  transition: transform 0.45s var(--ease-out-smooth);
 }
 
 /* ── Question card ── */
@@ -60,10 +68,17 @@
 
 /* Single-question layout keeps its own card treatment */
 .quiz .quiz-questions-list > .quiz-question {
-  border: 1px solid light-dark(var(--color-gray-200), rgb(197 160 89 / 20%));
-  border-radius: 16px;
+  border: var(--border-subtle);
+  border-radius: var(--radius-l);
   background: var(--color-shaded);
-  box-shadow: var(--shadow-lift-m);
+  box-shadow: var(--shadow-card);
+}
+
+.dark-scheme .quiz .quiz-slider-shell,
+:root[data-theme='dark'] .quiz .quiz-slider-shell,
+.dark-scheme .quiz .quiz-questions-list > .quiz-question,
+:root[data-theme='dark'] .quiz .quiz-questions-list > .quiz-question {
+  box-shadow: var(--shadow-card-dark);
 }
 
 /* ── Nav bar ── */
@@ -73,23 +88,30 @@
   justify-content: space-between;
   gap: var(--space-s);
   padding: 12px var(--space-m);
-  border-top: 1px solid light-dark(var(--color-gray-200), rgb(197 160 89 / 15%));
+  border-top: var(--border-subtle);
 }
 
 .quiz .quiz-nav-btn {
   display: flex;
   align-items: center;
   gap: 6px;
-  border: 1px solid light-dark(var(--color-gray-300), rgb(197 160 89 / 25%));
-  border-radius: 999px;
+  border: 1px solid light-dark(rgb(11 31 58 / 22%), rgb(232 238 246 / 22%));
+  border-radius: var(--radius-m);
   padding: 6px 14px;
   font: inherit;
   font-size: var(--body-font-size-s);
   font-weight: 600;
-  color: light-dark(var(--color-gray-700), var(--color-muted));
-  background: light-dark(#fff, rgb(197 160 89 / 6%));
+  color: var(--color-text-muted);
+  background: light-dark(var(--color-white), rgb(232 238 246 / 4%));
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  transition: background-color var(--duration-fast) var(--ease-out-smooth),
+    color var(--duration-fast) var(--ease-out-smooth),
+    border-color var(--duration-fast) var(--ease-out-smooth);
+}
+
+.quiz .quiz-nav-btn:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
 }
 
 .quiz .quiz-nav-btn:disabled {
@@ -98,9 +120,9 @@
 }
 
 .quiz .quiz-nav-btn:hover:not(:disabled) {
-  border-color: light-dark(var(--color-gold), rgb(197 160 89 / 50%));
-  background: light-dark(rgb(197 160 89 / 8%), rgb(197 160 89 / 12%));
-  color: light-dark(var(--color-ink), var(--color-parchment));
+  border-color: var(--color-blue);
+  background: light-dark(rgb(31 95 173 / 6%), rgb(127 178 240 / 10%));
+  color: var(--color-text);
 }
 
 .quiz .quiz-nav-btn.is-hidden {
@@ -123,12 +145,13 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: light-dark(var(--color-gray-300), rgb(197 160 89 / 25%));
-  transition: background-color 0.2s, transform 0.2s;
+  background: light-dark(rgb(11 31 58 / 18%), rgb(232 238 246 / 22%));
+  transition: background-color var(--duration-fast) var(--ease-out-smooth),
+    transform var(--duration-fast) var(--ease-out-smooth);
 }
 
 .quiz .quiz-nav-dot.is-active {
-  background: var(--color-accent);
+  background: light-dark(var(--color-red), var(--color-red-bright));
   transform: scale(1.35);
 }
 
@@ -140,7 +163,9 @@
   padding: var(--space-m) 0 0;
   font-family: var(--heading-font-family);
   font-size: var(--heading-font-size-m);
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
   text-align: center;
   overflow-wrap: break-word;
 }
@@ -149,7 +174,7 @@
   margin: calc(-1 * var(--space-xs)) 0 var(--space-xs);
   font-size: var(--body-font-size-s);
   text-align: center;
-  color: light-dark(var(--color-gray-600), var(--color-muted));
+  color: var(--color-text-muted);
 }
 
 /* ── Options ── */
@@ -162,23 +187,33 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid light-dark(var(--color-gray-200), rgb(197 160 89 / 20%));
-  border-radius: 999px;
+  border: 1.5px solid light-dark(rgb(11 31 58 / 16%), rgb(232 238 246 / 18%));
+  border-radius: var(--radius-m);
   padding: 10px 20px;
+  background: light-dark(var(--color-white), rgb(232 238 246 / 3%));
   cursor: pointer;
   text-align: left;
-  transition: border-color 0.25s, background-color 0.25s, color 0.25s;
+  transition: border-color var(--duration-base) var(--ease-out-smooth),
+    background-color var(--duration-base) var(--ease-out-smooth),
+    color var(--duration-base) var(--ease-out-smooth),
+    box-shadow var(--duration-base) var(--ease-out-smooth);
 }
 
 .quiz .quiz-option:hover {
-  border-color: light-dark(var(--color-gold), rgb(197 160 89 / 50%));
-  background: light-dark(rgb(197 160 89 / 15%), rgb(197 160 89 / 8%));
+  border-color: var(--color-blue);
+  background: light-dark(rgb(31 95 173 / 6%), rgb(127 178 240 / 8%));
+}
+
+.quiz .quiz-option:has(input:focus-visible) {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
 }
 
 .quiz .quiz-option:has(input:checked) {
-  border-color: var(--color-accent);
-  background: var(--color-accent);
-  color: light-dark(var(--color-ink), var(--color-parchment));
+  border-color: var(--color-blue);
+  background: light-dark(rgb(31 95 173 / 10%), rgb(127 178 240 / 14%));
+  box-shadow: inset 0 0 0 1px var(--color-blue);
+  color: var(--color-text);
 }
 
 .quiz .quiz-option input {
@@ -196,15 +231,17 @@
 }
 
 .quiz .quiz-option.is-selected.is-correct {
-  border-color: light-dark(var(--color-green-500), var(--color-green-400));
-  background: light-dark(var(--color-green-100), rgb(30 144 41 / 20%));
-  color: light-dark(var(--color-green-600), var(--color-green-200));
+  border-color: var(--quiz-correct-border);
+  background: var(--quiz-correct-bg);
+  box-shadow: inset 0 0 0 1px var(--quiz-correct-border);
+  color: var(--quiz-correct);
 }
 
 .quiz .quiz-option.is-selected.is-wrong {
-  border-color: light-dark(var(--color-red-400), var(--color-red-300));
-  background: light-dark(var(--color-red-100), rgb(199 16 0 / 20%));
-  color: light-dark(var(--color-red-600), var(--color-red-200));
+  border-color: var(--quiz-wrong-border);
+  background: var(--quiz-wrong-bg);
+  box-shadow: inset 0 0 0 1px var(--quiz-wrong-border);
+  color: var(--quiz-wrong);
 }
 
 /* ── Feedback ── */
@@ -215,16 +252,16 @@
 .quiz .quiz-feedback {
   margin: var(--space-s) 0 0;
   font-size: var(--body-font-size-s);
-  font-weight: 500;
+  font-weight: 600;
   text-align: center;
 }
 
 .quiz .quiz-feedback.is-correct {
-  color: light-dark(var(--color-green-600), var(--color-green-200));
+  color: var(--quiz-correct);
 }
 
 .quiz .quiz-feedback.is-incorrect {
-  color: light-dark(var(--color-red-600), var(--color-red-200));
+  color: var(--quiz-wrong);
 }
 
 /* ── Complete banner ── */
@@ -232,41 +269,53 @@
   margin: 0;
   padding: var(--space-m);
   font-size: var(--body-font-size-s);
-  font-weight: 500;
+  font-weight: 600;
   text-align: center;
-  border-top: 1px solid light-dark(var(--color-gray-200), rgb(197 160 89 / 15%));
+  border-top: var(--border-subtle);
 }
 
 .quiz .quiz-complete-banner.is-success {
-  background: light-dark(var(--color-green-100), rgb(30 144 41 / 15%));
-  color: light-dark(var(--color-green-600), var(--color-green-200));
+  background: var(--quiz-correct-bg);
+  color: var(--quiz-correct);
 }
 
 .quiz .quiz-complete-banner.is-retry {
-  background: light-dark(rgb(197 160 89 / 10%), rgb(197 160 89 / 8%));
-  color: light-dark(var(--color-ink), var(--color-parchment));
+  background: light-dark(rgb(31 95 173 / 8%), rgb(127 178 240 / 10%));
+  color: var(--color-text);
 }
 
-/* ── Submit ── */
+/* ── Submit – matches global CTA ── */
 .quiz .quiz-submit {
   justify-self: start;
-  border: 1px solid var(--color-accent);
-  border-radius: 999px;
-  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-m);
+  padding: 12px 24px;
   font: inherit;
   font-size: var(--body-font-size-s);
   font-weight: 600;
-  color: var(--color-ink);
-  background: var(--color-accent);
+  letter-spacing: 0.01em;
+  color: var(--color-white);
+  background-color: var(--color-navy);
+  background-image: var(--gradient-cta);
+  background-size: 160% 100%;
+  background-position: 0% 50%;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  transition: background-position var(--duration-base) var(--ease-out-smooth),
+    transform var(--duration-base) var(--ease-out-smooth),
+    box-shadow var(--duration-base) var(--ease-out-smooth);
 }
 
-.quiz .quiz-submit:hover {
-  background: var(--color-gold);
-  border-color: var(--color-gold);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px light-dark(rgb(197 160 89 / 30%), rgb(197 160 89 / 25%));
+.quiz .quiz-submit:hover,
+.quiz .quiz-submit:focus-visible {
+  background-position: 100% 50%;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px -8px light-dark(rgb(11 31 58 / 45%), rgb(0 0 0 / 60%)),
+    0 4px 14px -6px rgb(228 0 43 / 35%);
+}
+
+.quiz .quiz-submit:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 3px;
 }
 
 .quiz .quiz-submit[hidden] {

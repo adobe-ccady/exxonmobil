@@ -1,12 +1,21 @@
 /* Journey map block - mobile first, 600px / 900px breakpoints */
 
 .journey-map {
+  --journey-rule: light-dark(rgb(11 31 58 / 18%), rgb(232 238 246 / 20%));
+  --journey-active: light-dark(var(--color-red), var(--color-red-bright));
+  --journey-step-shadow: var(--shadow-card);
+
   padding: var(--space-s) 0;
+}
+
+.dark-scheme .journey-map,
+:root[data-theme='dark'] .journey-map {
+  --journey-step-shadow: var(--shadow-card-dark);
 }
 
 .journey-map .journey-map-intro {
   margin: 0 0 var(--space-s);
-  color: light-dark(var(--color-gray-700), var(--color-gray-300));
+  color: var(--color-text-muted);
   font-size: var(--body-font-size-s);
 }
 
@@ -26,7 +35,7 @@
 .journey-map .journey-map-progress-meta {
   margin: 0 0 var(--space-s);
   font-size: var(--body-font-size-xs);
-  color: light-dark(var(--color-gray-600), var(--color-gray-300));
+  color: var(--color-text-muted);
 }
 
 .journey-map .journey-map-progress-meta:empty {
@@ -52,7 +61,7 @@
 }
 
 .journey-map .journey-map-progress-item.is-complete:not(:last-child)::after {
-  background: var(--color-green-500);
+  background: var(--color-teal);
 }
 
 .journey-map .journey-map-progress-dot {
@@ -60,26 +69,28 @@
   inline-size: 20px;
   block-size: 20px;
   border-radius: 999px;
-  border: 2px solid light-dark(var(--color-gray-300), var(--color-gray-600));
+  border: 2px solid var(--journey-rule);
   display: grid;
   place-items: center;
   font-size: 12px;
   font-weight: 700;
   line-height: 1;
   color: var(--color-light);
-  background: light-dark(var(--color-light), var(--color-gray-900));
+  background: light-dark(var(--color-white), var(--color-navy-card));
   transform: translateY(4px);
-  transition: border-color 0.3s, background-color 0.3s, box-shadow 0.3s;
+  transition: border-color var(--duration-base) var(--ease-out-smooth),
+    background-color var(--duration-base) var(--ease-out-smooth),
+    box-shadow var(--duration-base) var(--ease-out-smooth);
 }
 
 .journey-map .journey-map-progress-item.is-active .journey-map-progress-dot {
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 4px rgb(197 160 89 / 20%);
+  border-color: var(--journey-active);
+  box-shadow: 0 0 0 4px rgb(228 0 43 / 16%);
 }
 
 .journey-map .journey-map-progress-item.is-complete .journey-map-progress-dot {
-  border-color: var(--color-green-500);
-  background: var(--color-green-500);
+  border-color: var(--color-teal);
+  background: var(--color-teal);
 }
 
 .journey-map .journey-map-track {
@@ -88,23 +99,26 @@
 }
 
 .journey-map .journey-map-step {
-  border: 1px solid light-dark(var(--color-gray-200), var(--color-gray-700));
-  border-radius: 12px;
-  border-inline-start: 3px solid light-dark(var(--color-gray-300), var(--color-gray-600));
+  border: var(--border-subtle);
+  border-radius: var(--radius-l);
+  border-inline-start: 3px solid var(--journey-rule);
   padding: var(--space-l);
-  background: light-dark(var(--color-light), var(--color-gray-900));
-  transition: border-color 0.35s, box-shadow 0.35s, background-color 0.35s;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  transition: border-color var(--duration-base) var(--ease-out-smooth),
+    box-shadow var(--duration-base) var(--ease-out-smooth),
+    background-color var(--duration-base) var(--ease-out-smooth);
 }
 
 .journey-map .journey-map-step.is-active {
-  border-color: light-dark(var(--color-gray-300), var(--color-gray-500));
-  border-inline-start-color: var(--color-accent);
-  box-shadow: 0 4px 16px light-dark(rgb(197 160 89 / 10%), rgb(197 160 89 / 8%));
+  border-color: var(--journey-rule);
+  border-inline-start-color: var(--journey-active);
+  box-shadow: var(--journey-step-shadow);
 }
 
 .journey-map .journey-map-step.is-complete {
-  border-inline-start-color: var(--color-green-500);
-  background: light-dark(rgb(36 176 50 / 7%), rgb(24 114 32 / 18%));
+  border-inline-start-color: var(--color-teal);
+  background: light-dark(rgb(15 122 104 / 6%), rgb(15 122 104 / 16%));
 }
 
 .journey-map .journey-map-step.is-upcoming {
@@ -130,6 +144,12 @@
   gap: var(--space-s);
 }
 
+.journey-map .journey-map-step-toggle:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+  border-radius: var(--radius-s);
+}
+
 .journey-map .journey-map-step-toggle:disabled {
   cursor: default;
   opacity: 0.55;
@@ -143,10 +163,10 @@
 .journey-map .journey-map-step-toggle-icon {
   inline-size: 10px;
   block-size: 10px;
-  border-right: 2px solid light-dark(var(--color-gray-500), var(--color-gray-300));
-  border-bottom: 2px solid light-dark(var(--color-gray-500), var(--color-gray-300));
+  border-right: 2px solid var(--color-text-muted);
+  border-bottom: 2px solid var(--color-text-muted);
   transform: rotate(45deg);
-  transition: transform 0.3s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+  transition: transform var(--duration-base) var(--ease-out-smooth);
 }
 
 .journey-map .journey-map-step.is-active .journey-map-step-toggle-icon {
@@ -155,13 +175,17 @@
 
 .journey-map .journey-map-step-status {
   margin: 0;
+  font-family: var(--font-family-mono);
   font-size: var(--body-font-size-xs);
-  color: light-dark(var(--color-gray-600), var(--color-gray-300));
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
 }
 
 .journey-map .journey-map-step-title {
   margin: 0;
   font-size: var(--heading-font-size-xs);
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .journey-map .journey-map-step-content {
@@ -210,7 +234,7 @@
     width: auto;
     height: 2px;
     display: block;
-    background: light-dark(var(--color-gray-300), var(--color-gray-600));
+    background: var(--journey-rule);
   }
 
   .journey-map .journey-map-progress-dot {

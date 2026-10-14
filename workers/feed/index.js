@@ -1,7 +1,7 @@
-const FEED_TITLE = 'diyFIRE Articles';
-const FEED_DESCRIPTION = 'Latest diyFIRE article updates';
+const FEED_TITLE = 'ExxonMobil Newsroom';
+const FEED_DESCRIPTION = 'Latest ExxonMobil news releases, publications and viewpoints';
 const FEED_LANGUAGE = 'en-ca';
-const FEED_AUTHOR_NAME = 'diyFIRE';
+const FEED_AUTHOR_NAME = 'ExxonMobil';
 const PAGE_SIZE = 200;
 
 /**
@@ -146,7 +146,7 @@ ${enclosure}
     <description>${escapeXml(FEED_DESCRIPTION)}</description>
     <lastBuildDate>${now}</lastBuildDate>
     <language>${FEED_LANGUAGE}</language>
-    <generator>diyFIRE RSS Worker</generator>
+    <generator>ExxonMobil RSS Worker</generator>
     <atom:link href="${escapeXml(selfLink)}" rel="self" type="application/rss+xml"/>
     ${items.join('\n    ')}
   </channel>
@@ -199,8 +199,8 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const { pathname } = url;
-    const siteUrl = (env.SITE_URL || 'https://demo.bbird.live').replace(/\/+$/, '');
-    const origin = (env.CONTENT_ORIGIN || 'https://main--demo--scdemos.aem.live').replace(/\/+$/, '');
+    const siteUrl = (env.SITE_URL || 'https://main--exxonmobil--adobe-ccady.aem.live').replace(/\/+$/, '');
+    const origin = (env.CONTENT_ORIGIN || 'https://main--exxonmobil--adobe-ccady.aem.live').replace(/\/+$/, '');
 
     if (pathname !== '/rss.xml' && pathname !== '/feed.json') {
       return new Response('Not found', { status: 404 });

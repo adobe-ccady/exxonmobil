@@ -1,23 +1,31 @@
-/* Teaser block – Heritage Elite */
+/* Teaser block – ExxonMobil */
 
 main .teaser {
-  background: light-dark(var(--color-parchment), var(--color-card-dark));
-  border: var(--border-heritage);
-  border-radius: var(--border-radius-heritage);
+  --teaser-shadow: var(--shadow-card);
+
+  background: light-dark(var(--color-paper), var(--color-navy-card));
+  border: var(--border-subtle);
+  border-radius: var(--radius-l);
+  box-shadow: var(--teaser-shadow);
   text-align: center;
-  font-family: var(--font-family-serif);
+  font-family: var(--heading-font-family);
   font-size: var(--body-font-size-m);
   font-weight: 500;
-  color: light-dark(var(--color-ink), var(--color-parchment));
-  transition: transform 0.5s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
-    box-shadow 0.5s ease,
-    border-color 0.4s ease;
+  color: var(--color-text);
+  transition: transform var(--duration-base) var(--ease-out-smooth),
+    box-shadow var(--duration-base) var(--ease-out-smooth),
+    border-color var(--duration-base) var(--ease-out-smooth);
 }
 
 main .teaser:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lift-m);
-  border-color: light-dark(var(--color-gold), rgb(197 160 89 / 40%));
+  border-color: light-dark(rgb(31 95 173 / 35%), rgb(127 178 240 / 35%));
+}
+
+.dark-scheme main .teaser,
+:root[data-theme='dark'] main .teaser {
+  --teaser-shadow: var(--shadow-card-dark);
 }
 
 main .teaser > div {
@@ -27,18 +35,20 @@ main .teaser > div {
 }
 
 main .teaser > div > div a {
-  color: light-dark(var(--color-rust), var(--color-rust-bright));
+  color: light-dark(var(--color-red), var(--color-red-bright));
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
-  text-decoration-color: var(--color-gold);
+  text-decoration-color: currentcolor;
+  font-weight: 600;
   padding-inline-start: 0.5em;
-  transition: color 0.3s, text-decoration-color 0.3s;
+  transition: color var(--duration-base) var(--ease-out-smooth),
+    text-decoration-color var(--duration-base) var(--ease-out-smooth);
 }
 
 main .teaser > div > div a:hover {
-  color: var(--color-gold);
-  text-decoration-color: var(--color-gold);
+  color: var(--color-blue);
+  text-decoration-color: var(--color-blue);
 }
 
 @media (width >= 900px) {
@@ -55,7 +65,7 @@ main .section.login-teaser-image {
     margin: var(--main-block-space) auto;
     padding: 0 var(--content-padding-inline);
     overflow: hidden;
-    border-radius: var(--border-radius-heritage);
+    border-radius: var(--radius-l);
   }
   
   main .section.login-teaser-image > .default-content-wrapper {
@@ -99,7 +109,10 @@ main .section.login-teaser-image {
   main .section.login-teaser-image > .teaser-wrapper .teaser {
     max-width: min(40rem, 100%);
     margin: 0 auto;
-    box-shadow: 0 8px 24px rgb(0 0 0 / 18%);
+    background: var(--glass-bg);
+    border: var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    box-shadow: var(--shadow-lift-m);
   }
   
   main .section.login-teaser-image > .teaser-wrapper .teaser h4 {

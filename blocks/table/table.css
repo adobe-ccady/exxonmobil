@@ -1,9 +1,9 @@
 .table {
-  --table-border-color: light-dark(var(--color-gray-200), rgb(245 242 237 / 12%));
+  --table-border-color: light-dark(rgb(11 31 58 / 12%), rgb(232 238 246 / 14%));
 
   width: 100%;
   overflow-x: auto;
-  border-radius: 12px;
+  border-radius: var(--radius-m);
 }
 
 .table table {
@@ -36,8 +36,8 @@
 }
 
 .table table thead tr {
-  border-top: 2px solid var(--table-border-color);
-  border-bottom: 2px solid var(--table-border-color);
+  border-top: 0;
+  border-bottom: 2px solid var(--color-red);
 }
 
 .table table thead th {
@@ -45,17 +45,18 @@
   font-weight: 700;
   font-size: 0.85em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: light-dark(var(--color-ink), var(--color-parchment));
+  letter-spacing: 0.06em;
+  color: var(--color-white);
+  background-color: light-dark(var(--color-navy), var(--color-navy-card));
 }
 
 .table table tbody tr {
   border-bottom: 1px solid var(--table-border-color);
-  transition: background-color 0.2s;
+  transition: background-color var(--duration-fast) var(--ease-out-smooth);
 }
 
 .table table tbody tr:hover {
-  background-color: light-dark(rgb(161 79 43 / 4%), rgb(197 160 89 / 5%));
+  background-color: light-dark(rgb(31 95 173 / 5%), rgb(127 178 240 / 6%));
 }
 
 .table table th p,
@@ -78,7 +79,7 @@
 }
 
 .table.striped tbody tr:nth-child(odd):hover {
-  background-color: light-dark(rgb(161 79 43 / 6%), rgb(197 160 89 / 8%));
+  background-color: light-dark(rgb(31 95 173 / 8%), rgb(127 178 240 / 9%));
 }
 
 /* bordered variant */

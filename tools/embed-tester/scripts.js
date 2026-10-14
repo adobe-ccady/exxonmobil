@@ -22,7 +22,7 @@ function getBaseUrl() {
   const { origin } = window.location;
   if (origin.includes('.aem.')) return origin;
   if (origin.includes('localhost')) return origin;
-  return 'https://main--demo--scdemos.aem.live';
+  return 'https://main--exxonmobil--adobe-ccady.aem.live';
 }
 
 function resolveUrl(path) {

@@ -6,12 +6,12 @@ main .social-share {
   z-index: 950;
   opacity: 0.96;
   transition:
-    transform 0.35s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
-    opacity 0.35s ease;
+    transform var(--duration-base) var(--ease-out-smooth),
+    opacity var(--duration-base) var(--ease-out-smooth);
 }
 
 main .social-share:hover {
-  transform: translateY(-50%) translateX(-3px);
+  transform: translateY(-50%) translateX(-2px);
   opacity: 1;
 }
 
@@ -27,10 +27,10 @@ main .social-share .social-share-dock::before {
   z-index: -1;
   border-radius: 999px;
   background:
-    radial-gradient(circle at top, rgb(197 160 89 / 20%), transparent 58%),
-    radial-gradient(circle at bottom, rgb(161 79 43 / 20%), transparent 60%);
-  filter: blur(20px);
-  opacity: 0.8;
+    radial-gradient(circle at top, rgb(31 95 173 / 10%), transparent 58%),
+    radial-gradient(circle at bottom, rgb(228 0 43 / 8%), transparent 60%);
+  filter: blur(16px);
+  opacity: 0.6;
   pointer-events: none;
 }
 
@@ -41,18 +41,18 @@ main .social-share .social-share-list {
   margin: 0;
   padding: 0.55rem;
   list-style: none;
-  border: 1px solid light-dark(rgb(161 79 43 / 16%), rgb(245 242 237 / 12%));
+  border: 1px solid light-dark(rgb(11 31 58 / 10%), rgb(232 238 246 / 12%));
   border-radius: 999px;
   background:
     linear-gradient(
       180deg,
-      light-dark(rgb(255 255 255 / 84%), rgb(15 24 24 / 88%)),
-      light-dark(rgb(255 255 255 / 72%), rgb(15 24 24 / 78%))
+      light-dark(rgb(255 255 255 / 86%), rgb(15 36 64 / 88%)),
+      light-dark(rgb(255 255 255 / 74%), rgb(15 36 64 / 78%))
     );
   box-shadow:
-    0 24px 50px -24px rgb(0 0 0 / 42%),
-    inset 0 1px 0 light-dark(rgb(255 255 255 / 55%), rgb(255 255 255 / 8%));
-  backdrop-filter: blur(18px) saturate(150%);
+    0 16px 32px -16px light-dark(rgb(11 31 58 / 28%), rgb(0 0 0 / 55%)),
+    inset 0 1px 0 light-dark(rgb(255 255 255 / 55%), rgb(255 255 255 / 6%));
+  backdrop-filter: var(--glass-blur);
 }
 
 main .social-share .social-share-item {
@@ -72,18 +72,18 @@ main .social-share .social-share-action {
   background:
     linear-gradient(
       180deg,
-      light-dark(rgb(255 255 255 / 72%), rgb(255 255 255 / 9%)),
-      light-dark(rgb(245 242 237 / 42%), rgb(255 255 255 / 4%))
+      light-dark(rgb(255 255 255 / 72%), rgb(232 238 246 / 8%)),
+      light-dark(rgb(244 247 251 / 42%), rgb(232 238 246 / 3%))
     );
   box-shadow:
-    inset 0 1px 0 light-dark(rgb(255 255 255 / 65%), rgb(255 255 255 / 10%)),
-    0 12px 24px -18px rgb(0 0 0 / 48%);
+    inset 0 1px 0 light-dark(rgb(255 255 255 / 65%), rgb(255 255 255 / 8%)),
+    0 10px 20px -16px light-dark(rgb(11 31 58 / 40%), rgb(0 0 0 / 55%));
   transition:
-    transform 0.25s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
-    background-color 0.25s ease,
-    border-color 0.25s ease,
-    color 0.25s ease,
-    box-shadow 0.25s ease;
+    transform var(--duration-base) var(--ease-out-smooth),
+    background-color var(--duration-base) var(--ease-out-smooth),
+    border-color var(--duration-base) var(--ease-out-smooth),
+    color var(--duration-base) var(--ease-out-smooth),
+    box-shadow var(--duration-base) var(--ease-out-smooth);
   cursor: pointer;
   appearance: none;
   backdrop-filter: blur(10px);
@@ -91,13 +91,18 @@ main .social-share .social-share-action {
 
 main .social-share .social-share-action:hover,
 main .social-share .social-share-action:focus-visible {
-  color: light-dark(var(--color-rust), var(--color-gold));
-  border-color: light-dark(rgb(161 79 43 / 22%), rgb(197 160 89 / 28%));
-  transform: translateX(-2px) scale(1.04);
+  color: light-dark(var(--color-red), var(--color-red-bright));
+  border-color: light-dark(rgb(228 0 43 / 24%), rgb(255 77 106 / 30%));
+  transform: translateX(-2px);
   outline: none;
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 72%),
-    0 18px 24px -18px rgb(161 79 43 / 55%);
+    inset 0 1px 0 light-dark(rgb(255 255 255 / 72%), rgb(255 255 255 / 10%)),
+    0 12px 20px -14px rgb(228 0 43 / 35%);
+}
+
+main .social-share .social-share-action:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
 }
 
 main .social-share .social-share-action svg {
@@ -106,17 +111,21 @@ main .social-share .social-share-action svg {
 }
 
 main .social-share .social-share-action-copy {
-  color: light-dark(var(--color-rust), var(--color-gold));
+  color: var(--color-blue);
 }
 
 main .social-share.is-copied .social-share-action-copy {
-  color: var(--color-green-500);
+  color: light-dark(var(--color-green-600), var(--color-green-200));
   background:
-    linear-gradient(180deg, rgb(225 245 227 / 88%), rgb(163 225 168 / 42%));
+    linear-gradient(
+      180deg,
+      light-dark(rgb(225 245 227 / 88%), rgb(30 144 41 / 26%)),
+      light-dark(rgb(163 225 168 / 42%), rgb(30 144 41 / 14%))
+    );
 }
 
 main .social-share.is-copy-error .social-share-action-copy {
-  color: var(--color-red-500);
+  color: light-dark(var(--color-red), var(--color-red-bright));
 }
 
 main .social-share .social-share-sr-only {
@@ -159,6 +168,6 @@ main .social-share .social-share-sr-only {
 
   main .social-share .social-share-action:hover,
   main .social-share .social-share-action:focus-visible {
-    transform: translateY(-2px) scale(1.03);
+    transform: translateY(-2px);
   }
 }

@@ -10,17 +10,18 @@
   width: min(13rem, calc(100vw - 1.5rem));
   padding: var(--space-m);
   overflow: visible;
-  border: var(--border-heritage);
+  border: var(--border-subtle);
   border-right: 0;
-  border-radius: var(--space-s) 0 0 var(--space-s);
-  background: light-dark(var(--color-parchment), var(--color-card-dark));
+  border-radius: var(--radius-m) 0 0 var(--radius-m);
+  background: light-dark(rgb(255 255 255 / 92%), rgb(15 36 64 / 94%));
+  backdrop-filter: var(--glass-blur);
   color: var(--text-color);
-  box-shadow: -0.5rem 0 1.25rem rgb(0 0 0 / 18%);
+  box-shadow: -0.5rem 0 1.5rem light-dark(rgb(11 31 58 / 14%), rgb(0 0 0 / 45%));
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-xs);
   line-height: 1.4;
   opacity: 0;
-  transition: right 0.3s ease, opacity 0.2s ease;
+  transition: right var(--duration-base) var(--ease-out-smooth), opacity var(--duration-base) var(--ease-out-smooth);
 }
 
 .auth-toggle.visible {
@@ -45,17 +46,19 @@
   min-width: 2.75rem;
   min-height: 2.75rem;
   margin: 0;
-  border: 1px solid light-dark(var(--color-rust), var(--color-rust-bright));
+  border: 1px solid var(--color-red);
   border-right: 0;
-  border-radius: var(--space-s) 0 0 var(--space-s);
-  background: light-dark(var(--color-rust), var(--color-rust-bright));
+  border-radius: var(--radius-m) 0 0 var(--radius-m);
+
+  /* solid brand red in both themes: white text stays AA (red-bright would fail) */
+  background: var(--color-red);
   color: var(--color-light);
   padding: 0.75rem 0.5rem;
   cursor: pointer;
   font: inherit;
   text-align: center;
-  box-shadow: -0.25rem 0 0.75rem rgb(0 0 0 / 15%);
-  transition: left 0.2s ease, opacity 0.2s ease;
+  box-shadow: -0.25rem 0 0.75rem light-dark(rgb(11 31 58 / 18%), rgb(0 0 0 / 40%));
+  transition: left var(--duration-base) var(--ease-out-smooth), opacity var(--duration-base) var(--ease-out-smooth);
 }
 
 .auth-handle:hover {
@@ -73,7 +76,7 @@
   font-weight: 700;
   line-height: 1.1;
   text-align: center;
-  letter-spacing: 0.025rem;
+  letter-spacing: 0.04em;
   writing-mode: vertical-rl;
   text-orientation: mixed;
 }
@@ -99,10 +102,13 @@
   line-height: 1;
   padding: 0;
   opacity: 0.8;
+  transition: opacity var(--duration-base) var(--ease-out-smooth), color var(--duration-base) var(--ease-out-smooth);
 }
 
-.auth-close:hover {
+.auth-close:hover,
+.auth-close:focus-visible {
   opacity: 1;
+  color: var(--color-link-hover);
 }
 
 .auth-options {
@@ -116,9 +122,9 @@
   display: block;
   width: 100%;
   margin: 0;
-  border: 1px solid light-dark(var(--color-gray-200), var(--color-gray-700));
-  border-radius: 4px;
-  background: light-dark(var(--color-light), var(--color-gray-800));
+  border: 1px solid light-dark(rgb(11 31 58 / 16%), rgb(232 238 246 / 18%));
+  border-radius: var(--radius-m);
+  background: light-dark(var(--color-white), var(--color-navy-deep));
   color: var(--text-color);
   cursor: pointer;
   font-family: var(--body-font-family);
@@ -129,12 +135,21 @@
   text-transform: uppercase;
   letter-spacing: 0.03em;
   padding: 0.5rem 0.75rem;
-  transition: border-color 0.18s ease, background-color 0.18s ease;
+  transition: border-color var(--duration-base) var(--ease-out-smooth),
+    background-color var(--duration-base) var(--ease-out-smooth),
+    color var(--duration-base) var(--ease-out-smooth);
 }
 
-.auth-option-button:hover {
-  border-color: light-dark(var(--color-rust), var(--color-rust-bright));
-  background: light-dark(var(--color-gray-100), var(--color-gray-700));
+.auth-option-button:hover,
+.auth-option-button:focus-visible {
+  border-color: light-dark(var(--color-red), var(--color-red-bright));
+  background: light-dark(rgb(228 0 43 / 5%), rgb(255 77 106 / 10%));
+  color: var(--color-link-hover);
+}
+
+.auth-option-button:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
 }
 
 .auth-option-button.current-state {
@@ -151,7 +166,7 @@
 }
 
 .auth-handle.bounce {
-  animation: auth-handle-bounce 0.4s ease-in-out;
+  animation: auth-handle-bounce 0.4s var(--ease-out-smooth);
 }
 
 @keyframes auth-handle-bounce {

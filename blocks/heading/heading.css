@@ -1,0 +1,37 @@
+/*
+ * Heading block. Inherits the global heading sizes; style options from
+ * corporate.exxonmobil.com section headings ("Our global organization", "Latest news").
+ */
+.heading :is(h1, h2, h3, h4, h5, h6) {
+  margin-top: 0;
+}
+
+/* red: EMprint semibold in brand red (48px/64px, 34px/44px on mobile for h2) */
+.heading:is(.red, .red-small) :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--link-color);
+  font-weight: 600;
+}
+
+.heading:is(.red, .red-small) a:any-link {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+.heading:is(.red, .red-small) a:hover,
+.heading:is(.red, .red-small) a:focus-visible {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* red – small: 75% of the heading size (36px desktop / 25.5px mobile for h2), wider tracking */
+.heading.red-small :is(h1, h2, h3, h4, h5, h6) {
+  letter-spacing: 1px;
+}
+
+.heading.red-small h1 { font-size: calc(var(--heading-font-size-xxl) * 0.75); }
+.heading.red-small h2 { font-size: calc(var(--heading-font-size-xl) * 0.75); }
+.heading.red-small h3 { font-size: calc(var(--heading-font-size-l) * 0.75); }
+.heading.red-small h4 { font-size: calc(var(--heading-font-size-m) * 0.75); }
+.heading.red-small h5 { font-size: calc(var(--heading-font-size-s) * 0.75); }
+.heading.red-small h6 { font-size: calc(var(--heading-font-size-xs) * 0.75); }

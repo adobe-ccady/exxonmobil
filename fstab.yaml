@@ -1,0 +1,4 @@
+mountpoints:
+  /:
+    url: https://content.da.live/adobe-ccady/exxonmobil/
+    type: markup

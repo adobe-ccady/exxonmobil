@@ -1,0 +1,116 @@
+/* cards-topics: "Trending topics" 2x2 grid (source .keytopics.keytopics-two-up) */
+
+.cards-topics > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+/* mobile: stacked cards separated by a 1px rule (source item ::after) */
+.cards-topics > ul > li {
+  position: relative;
+}
+
+.cards-topics > ul > li:not(:last-child) {
+  padding-bottom: 39px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgb(209 211 212);
+}
+
+/* image: 16:9, 30px below */
+.cards-topics .cards-topics-card-image {
+  margin-bottom: 30px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.cards-topics .cards-topics-card-image a,
+.cards-topics .cards-topics-card-image p {
+  display: block;
+  margin: 0;
+}
+
+.cards-topics .cards-topics-card-image picture,
+.cards-topics .cards-topics-card-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* title: 24px/36px EMprint Regular #333 */
+.cards-topics .cards-topics-card-body > *,
+.cards-topics .cards-topics-card-body > [data-aue-type="richtext"] > * {
+  margin: 0;
+}
+
+.cards-topics h3.cards-topics-title {
+  font-size: var(--heading-font-size-l);
+  font-weight: 400;
+  line-height: 36px;
+  color: var(--text-color);
+}
+
+.cards-topics .cards-topics-title a:any-link {
+  color: var(--text-color);
+  font-weight: 400;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+/* tag chip: 13px/20px italic, red on light grey */
+.cards-topics .cards-topics-card-body .cards-topics-tag {
+  display: flex;
+  margin-top: 8px;
+}
+
+.cards-topics .cards-topics-tag a:any-link {
+  display: inline-block;
+  padding: 3px 10px;
+  background-color: var(--light-color);
+  color: var(--link-color);
+  font-size: var(--body-font-size-xs);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 20px;
+  text-decoration: none;
+}
+
+.cards-topics .cards-topics-tag a:hover {
+  color: rgb(153 14 41);
+  text-decoration: none;
+}
+
+/* hover (source .keytopics--link:hover): image dims, title turns red + underline */
+.cards-topics li:has(.cards-topics-card-image a:hover, .cards-topics-title a:hover) .cards-topics-card-image picture {
+  opacity: 0.7;
+}
+
+.cards-topics li:has(.cards-topics-card-image a:hover, .cards-topics-title a:hover) .cards-topics-title a:any-link {
+  color: var(--link-hover-color);
+  text-decoration: none;
+  border-bottom-color: var(--link-hover-color);
+}
+
+/* tablet: 2-up, 30px gutter, 60px row spacing */
+@media (width >= 600px) {
+  .cards-topics > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 60px 30px;
+  }
+
+  .cards-topics > ul > li:not(:last-child) {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+}
+
+/* desktop: 2-up, 44px gutter, 80px row spacing */
+@media (width >= 900px) {
+  .cards-topics > ul {
+    gap: 80px 44px;
+  }
+}

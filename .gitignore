@@ -7,13 +7,8 @@ helix-importer-ui
 .DS_Store
 *.bak
 .idea
-.playwright-mcp
-.playwright-cli
-.wrangler
-.dev.vars
 
 # Ensure these files are tracked
 !CLAUDE.md
 !AGENTS.md
-tasks/lessons.md
-tasks/todo.md
+

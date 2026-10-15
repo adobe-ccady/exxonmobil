@@ -1,336 +1,37 @@
-/* Hero block – ExxonMobil, mobile-first */
-
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
 }
 
 .hero {
-  --hero-bg: light-dark(var(--color-paper), var(--color-navy-deep));
-
   position: relative;
-  background-color: var(--hero-bg);
+  padding: 40px 24px;
+  min-height: 300px;
 }
 
-/* Image */
-.hero > div:first-child {
-  position: relative;
-  line-height: 0;
-}
-
-.hero .hero-img-light,
-.hero .hero-img-dark {
-  line-height: 0;
-}
-
-/* Gradient fade effect at the bottom of the hero image */
-.hero > div:first-child::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 65%;
-  background: linear-gradient(to bottom, transparent 0%, var(--hero-bg) 100%);
-  pointer-events: none;
-  z-index: 1;
-}
-
-
-/* Dual-image hero: light shown by default, dark hidden */
-.hero .hero-img-dark {
-  display: none;
-}
-
-/* Dark theme: swap images (must match light-dark() triggers, not OS preference) */
-.dark-scheme .hero .hero-img-light,
-:root[data-theme='dark'] .hero .hero-img-light {
-  display: none;
-}
-
-.dark-scheme .hero .hero-img-dark,
-:root[data-theme='dark'] .hero .hero-img-dark {
-  display: block;
-}
-
-.hero picture img {
-  display: block;
-  width: 100%;
-  max-height: 580px;
-  object-fit: cover;
-  opacity: 0.55;
-}
-
-/* Text overlay */
-.hero > div:last-child {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  padding: 40px var(--content-padding-inline);
-  display: flex;
-  align-items: center;
-}
-
-.hero > div:last-child > div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-m);
-  max-width: 600px;
-}
-
-/* Hide the second image row when hero block decoration hasn't run (Target offer injection) */
-.hero > div:nth-child(2):not(.hero-img-dark, .hero-img-light, .hero-text) {
-  display: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  @keyframes hero-enter {
-    from {
-      opacity: 0;
-      transform: translateY(16px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .hero > div:last-child > div {
-    animation: hero-enter 0.8s var(--ease-out-smooth) both;
-  }
-
-  .hero .hero-tagline {
-    animation: hero-enter 0.7s var(--ease-out-smooth) 0.05s both;
-  }
-
-  .hero h1 {
-    animation: hero-enter 0.8s var(--ease-out-smooth) 0.12s both;
-  }
-
-  .hero p.button-container {
-    animation: hero-enter 0.7s var(--ease-out-smooth) 0.3s both;
-  }
-}
-
-/* Tagline – precise mono eyebrow */
-.hero .hero-tagline {
-  font-family: var(--font-family-mono);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: light-dark(var(--color-red), var(--color-red-bright));
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  margin: 0;
-}
-
-/* Heading */
 .hero h1 {
-  margin: 0;
-  font-family: var(--heading-font-family);
-  font-size: clamp(2rem, 8vw, 4.5rem);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-  color: light-dark(var(--color-navy), var(--color-paper));
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--background-color);
 }
 
-.hero h1 em {
-  font-weight: inherit;
-  font-style: normal;
-  background: linear-gradient(120deg, var(--color-navy) 0%, var(--color-red) 55%, var(--color-steel) 100%);
-  background-clip: text;
-  color: transparent;
+.hero picture {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  object-fit: cover;
+  box-sizing: border-box;
 }
 
-.dark-scheme .hero h1 em,
-:root[data-theme='dark'] .hero h1 em {
-  background: linear-gradient(120deg, var(--color-red-bright) 0%, var(--color-sky) 100%);
-  background-clip: text;
-  color: transparent;
-}
-
-/* Body text — hidden on mobile */
-.hero p:not(.button-container, .hero-tagline) {
-  display: none;
-  max-width: 550px;
-  margin: 0;
-  font-family: var(--body-font-family);
-  font-size: 1.15rem;
-  font-weight: 400;
-  color: light-dark(var(--color-navy), var(--color-slate));
-  line-height: 1.65;
-}
-
-.hero p.button-container {
-  margin-top: var(--space-s);
-}
-
-/* Icon */
-.hero .icon {
-  flex-shrink: 0;
-  width: 165px;
-  height: 45px;
-}
-
-.hero .icon img {
+.hero img {
+  object-fit: cover;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-}
-
-/* Dark-mode image: blend into deep navy bg with soft edges */
-.dark-scheme .hero .hero-img-dark picture img,
-:root[data-theme='dark'] .hero .hero-img-dark picture img {
-  opacity: 0.3;
-  mask-image: radial-gradient(ellipse 85% 70% at 50% 35%, black 25%, transparent 100%);
-}
-
-/* Tablet: show body text */
-@media (width >= 600px) {
-  .hero p:not(.button-container, .hero-tagline) {
-    display: block;
-    font-size: 1.25rem;
-  }
-}
-
-/* Desktop */
-@media (width >= 900px) {
-  .hero > div:last-child {
-    padding: 100px 5vw;
-  }
-
-  .hero > div:last-child > div {
-    max-width: 1000px;
-    margin: 0 25%;
-  }
-
-  .hero h1 {
-    font-size: clamp(3.5rem, 5vw, 6rem);
-  }
-}
-
-@media (width >= 1200px) {
-  .hero > div:last-child {
-    padding: 100px 6vw;
-  }
-
-  .hero h1 {
-    font-size: clamp(4rem, 5.5vw, 6.5rem);
-  }
-}
-
-/* No-image fallback */
-.hero.no-image > div:last-child {
-  position: static;
-  padding: 80px var(--content-padding-inline);
-}
-
-.hero.no-image > div:last-child > div {
-  align-items: center;
-  text-align: center;
-  max-width: var(--grid-container-width);
-  margin: 0 auto;
-}
-
-.hero.no-image p:not(.button-container, .hero-tagline) {
-  display: block;
 }
 
 @media (width >= 900px) {
-  .hero.no-image > div:last-child {
-    min-height: 400px;
-    padding: 100px 5vw;
+  .hero {
+    padding: 40px 32px;
   }
-}
-
-@media (width >= 1200px) {
-  .hero.no-image > div:last-child {
-    padding: 120px 6vw;
-  }
-}
-
-/* Background color variants (class names kept for authors) */
-
-/* rust = brand red */
-.hero.rust {
-  --hero-bg: var(--color-red);
-}
-
-.hero.rust h1,
-.hero.rust p:not(.button-container, .hero-tagline) {
-  color: var(--color-white);
-}
-
-.hero.rust .hero-tagline {
-  color: var(--color-white);
-}
-
-/* Variant heros: reset gradient text and use solid color */
-:root .hero.rust h1 em {
-  background: none;
-  background-clip: unset;
-  color: var(--color-navy-deep);
-}
-
-/* gold = cool steel-tinted surface */
-.hero.gold {
-  --hero-bg: light-dark(
-    color-mix(in srgb, var(--color-steel) 12%, var(--color-white)),
-    color-mix(in srgb, var(--color-steel) 35%, var(--color-navy-deep))
-  );
-}
-
-.hero.gold h1,
-.hero.gold p:not(.button-container, .hero-tagline) {
-  color: light-dark(var(--color-navy), var(--color-paper));
-}
-
-.hero.gold .hero-tagline {
-  color: var(--color-blue);
-}
-
-/* ink = deep navy */
-.hero.ink {
-  --hero-bg: light-dark(var(--color-navy), var(--color-navy-card));
-}
-
-.hero.ink h1,
-.hero.ink p:not(.button-container, .hero-tagline) {
-  color: var(--color-paper);
-}
-
-.hero.ink .hero-tagline {
-  color: var(--color-red-bright);
-}
-
-:root .hero.ink h1 em {
-  background: none;
-  background-clip: unset;
-  color: var(--color-red-bright);
-}
-
-/* Buttons on saturated variants: white outline, fills white on hover */
-.hero:is(.rust, .ink) a.button:any-link,
-.hero:is(.rust, .ink) button.button {
-  border-color: rgb(255 255 255 / 85%);
-  background: transparent;
-  color: var(--color-white);
-  box-shadow: none;
-}
-
-.hero:is(.rust, .ink) a.button:any-link:hover,
-.hero:is(.rust, .ink) a.button:any-link:focus-visible,
-.hero:is(.rust, .ink) button.button:hover,
-.hero:is(.rust, .ink) button.button:focus-visible {
-  background: var(--color-white);
-  border-color: var(--color-white);
-  color: var(--color-navy);
-  box-shadow: var(--shadow-lift-m);
-}
-
-.hero:is(.rust, .ink) a.button:any-link:focus-visible,
-.hero:is(.rust, .ink) button.button:focus-visible {
-  outline-color: var(--color-white);
 }

@@ -1,0 +1,9 @@
+{
+  "sites": {
+    "exxonmobil": {
+      "previewOrg": "adobe-ccady",
+      "previewSite": "exxonmobil",
+      "contentHostUrl": "https://content.da.live/adobe-ccady/exxonmobil/"
+    }
+  }
+}

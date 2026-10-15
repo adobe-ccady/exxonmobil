@@ -1,1 +1,3 @@
-plugins/martech/src/*.min.js
+helix-importer-ui
+dompurify.min.js
+*.min.js

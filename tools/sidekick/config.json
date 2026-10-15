@@ -1,13 +1,5 @@
 {
   "project": "ExxonMobil",
-  "plugins": [
-    {
-      "id": "experimentation",
-      "titleI18n": {
-        "en": "Experimentation"
-      },
-      "environments": ["dev", "preview"],
-      "event": "experimentation"
-    }
-  ]
+  "editUrlLabel": "Document Authoring",
+  "editUrlPattern": "https://da.live/edit#/{{org}}/{{site}}{{pathname}}"
 }

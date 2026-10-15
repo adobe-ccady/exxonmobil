@@ -1,0 +1,120 @@
+/* cards-links: image + title + link list cards (source: .highlight--wrapper.highlight-white) */
+
+/* mobile: horizontal swipe row (source is a carousel) */
+.cards-links > ul {
+  display: flex;
+  margin: 0 -10px 48px;
+  padding: 2px 0 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.cards-links > ul::-webkit-scrollbar {
+  display: none;
+}
+
+.cards-links > ul > li {
+  box-sizing: border-box;
+  flex: 0 0 calc(100% - 68px);
+  padding: 0 10px;
+  scroll-snap-align: start;
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 28px;
+}
+
+.cards-links .cards-links-card-image {
+  margin: 0 0 20px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.cards-links .cards-links-card-image p {
+  margin: 0;
+}
+
+.cards-links .cards-links-card-image picture {
+  display: block;
+}
+
+.cards-links .cards-links-card-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.cards-links .cards-links-card-body > * {
+  margin: 0;
+}
+
+.cards-links .cards-links-card-body h3 {
+  margin: 0 0 20px;
+  color: var(--text-color);
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 36px;
+}
+
+.cards-links .cards-links-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-links .cards-links-list > li,
+.cards-links .cards-links-link {
+  margin: 0;
+  padding: 0 0 8px;
+}
+
+.cards-links .cards-links-list > li:last-child,
+.cards-links .cards-links-link:last-child {
+  padding-bottom: 0;
+}
+
+.cards-links .cards-links-card-body a:any-link {
+  color: var(--text-color);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  text-decoration: none;
+}
+
+.cards-links .cards-links-card-body a:hover,
+.cards-links .cards-links-card-body a:focus-visible {
+  color: var(--brand-red-dark);
+  text-decoration: none;
+}
+
+@media (width >= 900px) {
+  .cards-links {
+    margin: 40px 0 0;
+  }
+
+  .cards-links > ul {
+    margin: 0 0 60px;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .cards-links > ul > li {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0 22px;
+  }
+
+  .cards-links .cards-links-card-body h3 {
+    font-size: 34px;
+    line-height: 44px;
+  }
+
+  .cards-links .cards-links-list > li,
+  .cards-links .cards-links-link {
+    padding-bottom: 16px;
+  }
+}

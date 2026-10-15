@@ -1,0 +1,26 @@
+/* ExxonMobil brand tokens, extracted from corporate.exxonmobil.com */
+:root {
+  /* brand palette */
+  --brand-red: #fe000c;
+  --brand-red-dark: #d5000a;
+  --brand-green: #00a14d;
+  --brand-blue: #0c479d;
+  --brand-blue-light: #3c89e5;
+  --brand-grey: #f1f2f2;
+  --brand-grey-mid: #939598;
+  --brand-charcoal: #333;
+  --brand-slate: #6d6e71;
+  --brand-footer-text: #e6e7e8;
+
+  /* layout */
+  --content-max-width: 1234px;
+  --section-padding: 50px;
+  --gutter: 20px;
+}
+
+@media (width >= 900px) {
+  :root {
+    --section-padding: 80px;
+    --gutter: 32px;
+  }
+}
